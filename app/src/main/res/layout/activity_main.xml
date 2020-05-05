@@ -8,6 +8,7 @@
     android:background="@drawable/background">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
@@ -35,13 +36,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginRight="@dimen/d20"
-            android:src="@mipmap/main_tab_ic_matches" />
+            android:src="@mipmap/main_tab_ic_matches"
+            android:layout_margin="@dimen/d10" />
     </androidx.appcompat.widget.Toolbar>
-
+    <com.zhao.ui_basic.view.CardLayout
+        android:id="@+id/cd_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom"
+        app:layout_constraintTop_toBottomOf="@id/tb_title"
+        app:layout_constraintVertical_weight="1"
+        android:background="@color/white"/>
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 

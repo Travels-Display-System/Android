@@ -15,7 +15,7 @@ public class Utils {
     }
 
     public static boolean isListEmpty(List<?> list) {
-        if (list.size() != 0 && list != null) {
+        if ( list != null&& list.size() != 0) {
             return false;
         }
         return true;

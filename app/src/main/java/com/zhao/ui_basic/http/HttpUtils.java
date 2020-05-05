@@ -82,7 +82,7 @@ public class HttpUtils {
 
     public static <T> void sendHttp(Observable<T> observable, final ResponseListener<T> listenter) {
         observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())//主线程修改ui
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<T>() {
                     @Override

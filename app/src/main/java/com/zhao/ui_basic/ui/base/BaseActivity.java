@@ -15,8 +15,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.zhao.ui_basic.R;
+import com.zhao.ui_basic.Utils.SharedPreferencesUtils;
 import com.zhao.ui_basic.mvp.BasePresenter;
 import com.zhao.ui_basic.mvp.BaseView;
+
+import org.greenrobot.eventbus.EventBus;
 
 public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> extends AppCompatActivity implements BaseView  {
 
@@ -37,6 +40,8 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> 
         if (mPresenter == null) {
             mPresenter = createPresenter();
             mPresenter.bindView(this);
+        }if (isRegister()) {
+            EventBus.getDefault().register(this);
         }
         initView();
         initData();
@@ -77,4 +82,15 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> 
         return mPresenter;
     }
 
+    public abstract void setData(Object data, String action);
+
+
+    public boolean isToken() {
+        return SharedPreferencesUtils.getSaveToken(this,
+                "token") != null ? true : false;
+    }
+
+    public String getToken() {
+        return SharedPreferencesUtils.getSaveToken(this, "token");
+    }
 }

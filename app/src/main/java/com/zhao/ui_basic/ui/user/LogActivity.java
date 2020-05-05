@@ -58,6 +58,11 @@ public class LogActivity extends BaseActivity<LoginView, LoginPresenter>
     }
 
     @Override
+    public void setData(Object data, String action) {
+
+    }
+
+    @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
     }

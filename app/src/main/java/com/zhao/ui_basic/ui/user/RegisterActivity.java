@@ -71,6 +71,11 @@ public class RegisterActivity extends BaseActivity<RegisterView, RegisterPresent
         return new RegisterPresenter();
     }
 
+    @Override
+    public void setData(Object data, String action) {
+
+    }
+
     private void selectPhoto(){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setDataAndType(MediaStore.Images.Media.INTERNAL_CONTENT_URI,"image/*");
