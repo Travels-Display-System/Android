@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/d40"
+            android:orientation="horizontal" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_horizontal">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d20"
+            android:layout_marginTop="@dimen/d20"
+            android:layout_marginRight="@dimen/d20"
+            android:text="Brian Voong"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/sp30"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/tv_name"
+            android:text="35"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/sp25" />
+
+        <TextView
+            android:id="@+id/tv_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_marginLeft="@dimen/d20"
+            android:text="CEO of LBTS"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/sp25" />
+
+        <TextView
+            android:id="@+id/tv_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_work"
+            android:layout_marginLeft="@dimen/d20"
+            android:layout_marginTop="@dimen/d20"
+            android:layout_marginRight="@dimen/d20"
+            android:text="Create nskskfnghefdhsdh"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/sp17" />
+
+        <ImageView
+            android:id="@+id/ic_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/d20"
+            android:layout_toLeftOf="@id/ic_bule"
+            android:src="@mipmap/ic_pass" />
+
+        <ImageView
+            android:id="@+id/ic_bule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/d20"
+            android:layout_marginRight="@dimen/d20"
+            android:layout_marginBottom="30dp"
+            android:src="@mipmap/ic_bule" />
+
+        <ImageView
+            android:id="@+id/ic_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/d20"
+            android:layout_toRightOf="@id/ic_bule"
+            android:src="@mipmap/ic_like" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/d20"
+        android:src="@mipmap/ic_down"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"></ImageView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

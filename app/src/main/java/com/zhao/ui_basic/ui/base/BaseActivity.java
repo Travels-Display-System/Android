@@ -16,10 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.zhao.ui_basic.R;
 import com.zhao.ui_basic.Utils.SharedPreferencesUtils;
+import com.zhao.ui_basic.Utils.event.EventMessage;
 import com.zhao.ui_basic.mvp.BasePresenter;
 import com.zhao.ui_basic.mvp.BaseView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> extends AppCompatActivity implements BaseView  {
 
@@ -47,10 +50,25 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> 
         initData();
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.unBindView();
+        }
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
     protected void showToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMessage(EventMessage message) {
+    }
 
     protected String getEditText(EditText t){
         return t.getText().toString().trim();

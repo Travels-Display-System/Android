@@ -9,4 +9,12 @@
     <color name="mid_yellow">#FF9800</color>
     <color name="grey">#A89B9B</color>
     <color name="white">#A4FFFFFF</color>
+    <color name="c1">#CC4545</color>
+    <color name="c2">#838181</color>
+    <color name="c3">#000000</color>
+    <color name="c4">#1a000000</color>
+    <color name="c5">#45A2EC</color>
+    <color name="c6">#dddddd</color>
+    <color name="c7">#9FA0A3</color>
+    <color name="c8">#95E93427</color>
 </resources>

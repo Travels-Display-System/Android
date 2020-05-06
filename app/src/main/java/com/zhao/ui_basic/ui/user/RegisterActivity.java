@@ -73,7 +73,11 @@ public class RegisterActivity extends BaseActivity<RegisterView, RegisterPresent
 
     @Override
     public void setData(Object data, String action) {
-
+        if (data != null) {
+            String token = (String) data;
+            SharedPreferencesUtils.saveToken(this, "token", token);//保存token
+            startIntent(MainActivity.class, true);
+        }
     }
 
     private void selectPhoto(){
@@ -147,15 +151,6 @@ public class RegisterActivity extends BaseActivity<RegisterView, RegisterPresent
                 break;
             default:
                 break;
-        }
-    }
-
-    @Override
-    public void setData(Object data) {
-        if (data != null) {
-            String token = (String) data;
-            SharedPreferencesUtils.saveToken(this, "token", token);//保存token
-            startIntent(MainActivity.class, true);
         }
     }
 

@@ -1,50 +1,86 @@
 package com.zhao.ui_basic.ui.main.Model;
 
+import java.util.List;
+
 public class MainModel {
+    private Long id;
 
-    private int id;
-    private String photo;
-    private String user_name;
-    private String user_age;
-    private String user_work;
+    private String title;
 
-    public int getId() {
+    private String content;
+
+    //审核状态：0为未审核(未提交），1为审核中，2为审核通过，3为审核未通过
+    private Integer state;
+
+    private String timestamp;
+
+    private String advice;
+
+    private String  username;
+
+    private  String type;
+
+    public List<Keyword> keywordList;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getPhoto() {
-        return photo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public String getContent() {
+        return content;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public Integer getState() {
+        return state;
     }
 
-    public String getUser_age() {
-        return user_age;
+    public void setState(Integer state) {
+        this.state = state;
     }
 
-    public void setUser_age(String user_age) {
-        this.user_age = user_age;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public String getUser_work() {
-        return user_work;
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public void setUser_work(String user_work) {
-        this.user_work = user_work;
+    public String getAdvice() {
+        return advice;
     }
+
+    public void setAdvice(String advice) {
+        this.advice = advice;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUserId(String username) {
+        this.username = username;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getType(){return type;}
+    public void setType(String type){this.type=type;}
+
+    public List<Keyword> getKeywordList(){return keywordList;}
+    public void setKeywordList(List<Keyword> keywordList){this.keywordList=keywordList;}
 }

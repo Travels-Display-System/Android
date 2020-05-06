@@ -73,9 +73,8 @@ public class MainCard extends FrameLayout implements View.OnTouchListener {
         ivPhoto = findViewById(R.id.iv_photo);
         tvLike = findViewById(R.id.tv_like);
         tvNope = findViewById(R.id.tv_nope);
-        tvName = findViewById(R.id.tv_name);
-        tvAge = findViewById(R.id.tv_age);
-        tvWork = findViewById(R.id.tv_work);
+        tvName = findViewById(R.id.title);
+        tvWork = findViewById(R.id.username);
         cdViewMain.setOnTouchListener(this);
         sceWh = getSceWh(getContext());
         leftBoy = sceWh * (1.0f / 6.0f);
@@ -218,17 +217,11 @@ public class MainCard extends FrameLayout implements View.OnTouchListener {
     public void setModel(MainModel model) {
         if (!Utils.isEmpty(model)) {
             this.mainModel = model;
-            if (!Utils.isEmpty(model.getPhoto())) {
-                Glide.with(getContext()).load(model.getPhoto()).into(ivPhoto);
+            if (!Utils.isEmpty(model.getTitle())) {
+                tvName.setText(model.getTitle());
             }
-            if (!Utils.isEmpty(model.getUser_name())) {
-                tvName.setText(model.getUser_name());
-            }
-            if (!Utils.isEmpty(model.getUser_age())) {
-                tvAge.setText(model.getUser_age());
-            }
-            if (!Utils.isEmpty(model.getUser_work())) {
-                tvWork.setText(model.getUser_work());
+            if (!Utils.isEmpty(model.getUsername())) {
+                tvWork.setText(model.getUsername());
             }
         }
     }

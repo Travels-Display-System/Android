@@ -26,11 +26,11 @@ public class HttpUtils {
     /**
      * 生产环境
      */
-    private static final String BASE_URL = "http://101.132.114.122:8099/";
+    private static final String BASE_URL = "http://39.106.60.24:30208/";
     /**
      * 测试环境
      */
-    private static final String BASE_URL_TEST = "http://101.132.114.122:8099/";
+    private static final String BASE_URL_TEST = "http://39.106.60.24:30208/";
 
     public static String isTest(boolean isTest) {
         if (isTest) {
@@ -43,11 +43,12 @@ public class HttpUtils {
     //Builder模式，build()提交
     public static <T> T createApi(Class<T> tClass) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(isTest(true))//地址处理
+                .baseUrl(isTest(true))
                 .client(getClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//java适配器
-                .addConverterFactory(GsonConverterFactory.create())//gson工厂
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        Log.e("============return api",tClass.toString());
         return retrofit.create(tClass);
     }
 
@@ -69,18 +70,15 @@ public class HttpUtils {
      * @return
      */
     private static Interceptor getInterceptor() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-            @Override
-            public void log(String message) {
-                //打印日志
-                Log.e("http:====>",message);
-            }
-        });
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(
+                message -> Log.e("http:=====>", message)
+        );
         return interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
     }
 
 
     public static <T> void sendHttp(Observable<T> observable, final ResponseListener<T> listenter) {
+        Log.e("=startsendhttp in utils", " begining");
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())//主线程修改ui
                 .subscribeOn(AndroidSchedulers.mainThread())

@@ -1,7 +1,10 @@
 package com.zhao.ui_basic.http;
 
 import com.zhao.ui_basic.mvp.BaseModel;
+import com.zhao.ui_basic.ui.main.Model.MainModel;
 import com.zhao.ui_basic.ui.user.model.RegisterModel;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -14,12 +17,11 @@ public interface ApiService {
 
     //Form* 表单提交
     //GET ——Query   POST ——Field
-    @FormUrlEncoded
-    @GET("/user/register")
-    Observable<BaseModel<RegisterModel>> getRegister(@Query("user_type") int userType,
-                                                     @Query("photo") String photo,
-                                                     @Query("name") String name,
-                                                     @Query("email") String email,
-                                                     @Query("password") String pass);
+    @GET("/travel/query")
+    Observable<List<MainModel>> getTravelPage(@Query("page") int page);
 
+    @FormUrlEncoded
+    @POST("/user")
+    Observable<BaseModel<RegisterModel>> sendRegister(@Field("username") String username,
+                                                      @Field("password") String password);
 }

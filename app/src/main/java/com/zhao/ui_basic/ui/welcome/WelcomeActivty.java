@@ -52,10 +52,6 @@ public class WelcomeActivty extends BaseActivity<WelcomeView, WelcomePersenter> 
 
     }
 
-    @Override
-    public void setData(Object o) {
-
-    }
 
     @Override
     public void error(String e) {

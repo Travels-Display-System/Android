@@ -22,6 +22,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.zhao.ui_basic.http.ActionString.GET_TRAVEL_LIST;
+
 public class MainActivity extends BaseActivity<MainView, MainPresenter> implements MainView, View.OnClickListener{
 
     private ImageView ivProfile;
@@ -33,7 +35,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     private ImageView ivUnlimitedLikes;
     private CardLayout mCardLayout;
     private List<MainCard> mainCards = new ArrayList<>();
-    private int page = 0;
+    private int page = 1;
     private int pageSize = 20;
     private List<MainModel> modelList = new ArrayList<>();
     @Override
@@ -67,12 +69,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
 
     @Override
     public void initData() {
-        for(int i = 0; i<5;i++){
-            MainCard mainCard = new MainCard(this);
-            mCardLayout.addCardView(mainCard);
-            mainCards.add(mainCard);
-        }
-
+        getmPersenter().getTravelPage(page);
     }
 
     @Override
@@ -80,14 +77,11 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
         return new MainPresenter();
     }
 
-    @Override
-    public void setData(Object data, String action) {
-
-    }
 
 
     @Override
-    public void setData(Object data) {
+    public void setData(Object data,String action) {
+        if (action.equals(GET_TRAVEL_LIST)) {
             if (!Utils.isEmpty(data)) {
                 modelList = (List<MainModel>) data;
                 if (!Utils.isListEmpty(modelList)) {
@@ -99,6 +93,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
                     }
                 }
             }
+        }
     }
 
     @Override
@@ -110,6 +105,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_rewind:
+                upData();
                 break;
             case R.id.iv_who_sees:
                 onClickLeft(R.mipmap.recs_nope_stamp);
@@ -142,6 +138,8 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
                 if ((int) message.getData() == 1) {
                     initData();
                 }
+            }else if(message.getCode() == 2) {
+               startIntent(TravelDetails.class);
             }
         }
     }
@@ -157,4 +155,19 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
             mainCards.get(0).rightSliding(iamgeId);
         }
     }
+
+    private void upData() {
+        if (mCardLayout.getChildCount() != 0) {
+            mCardLayout.removeAllViews();
+        }
+        if (!Utils.isListEmpty(mainCards)) {
+            mainCards.clear();
+        }
+        if (!Utils.isListEmpty(modelList)) {
+            modelList.clear();
+        }
+        page++;
+        getmPersenter().getTravelPage(page);
+    }
+
 }

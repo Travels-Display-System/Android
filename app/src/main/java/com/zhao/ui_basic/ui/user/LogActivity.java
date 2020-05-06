@@ -59,7 +59,7 @@ public class LogActivity extends BaseActivity<LoginView, LoginPresenter>
 
     @Override
     public void setData(Object data, String action) {
-
+        showToast((String) data);
     }
 
     @Override
@@ -100,10 +100,6 @@ public class LogActivity extends BaseActivity<LoginView, LoginPresenter>
         }
     }
 
-    @Override
-    public void setData(Object o) {
-        showToast((String) o);
-    }
 
     @Override
     public void error(String msg) {

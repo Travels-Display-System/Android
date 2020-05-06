@@ -9,13 +9,15 @@ import com.zhao.ui_basic.mvp.BasePresenter;
 import com.zhao.ui_basic.ui.user.model.RegisterModel;
 import com.zhao.ui_basic.ui.user.view.RegisterView;
 
+import static com.zhao.ui_basic.http.ActionString.SEND_REGISTER;
+
 public class RegisterPresenter extends BasePresenter<RegisterView> {
     /**
      * 发起注册
      */
     public void sendRegister(String photo, String name, String email, String pass) {
         HttpUtils.sendHttp(HttpUtils.createApi(ApiService.class)
-                        .getRegister(1, photo, name, email, pass),
+                        .sendRegister(name,pass),
                 new ResponseListener<BaseModel<RegisterModel>>() {
                     @Override
                     public void onSuccess(BaseModel<RegisterModel> data) {
@@ -23,7 +25,7 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
                             if (data.getCode() == 200) {
                                 RegisterModel model = data.getData();
                                 if (getmBaseView() != null) {
-                                    getmBaseView().setData(model.getToken());
+                                    getmBaseView().setData(model.getToken(),SEND_REGISTER);
                                 }
                             }
                         }
