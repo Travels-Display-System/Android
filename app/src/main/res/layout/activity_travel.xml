@@ -37,7 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_horizontal">
+        app:layout_constraintTop_toBottomOf="@id/gl_horizontal"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="-16dp">
 
         <TextView
             android:id="@+id/tv_name"
@@ -88,9 +90,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/d20"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="32dp"
             android:layout_toLeftOf="@id/ic_bule"
-            android:src="@mipmap/ic_pass" />
+            android:background="@drawable/bg_btn_round"
+            android:src="@mipmap/ic_feel_pass"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds ="true"/>
 
         <ImageView
             android:id="@+id/ic_bule"
@@ -108,9 +116,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/d20"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="32dp"
             android:layout_toRightOf="@id/ic_bule"
-            android:src="@mipmap/ic_like" />
+            android:src="@mipmap/ic_feed_like" />
     </RelativeLayout>
 
     <ImageView
@@ -120,6 +129,7 @@
         android:layout_marginRight="@dimen/d20"
         android:src="@mipmap/ic_down"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"></ImageView>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" ></ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

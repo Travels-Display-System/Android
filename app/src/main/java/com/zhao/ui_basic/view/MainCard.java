@@ -217,6 +217,7 @@ public class MainCard extends FrameLayout implements View.OnTouchListener {
     public void setModel(MainModel model) {
         if (!Utils.isEmpty(model)) {
             this.mainModel = model;
+            Glide.with(getContext()).load(R.mipmap.s).into(ivPhoto);
             if (!Utils.isEmpty(model.getTitle())) {
                 tvName.setText(model.getTitle());
             }

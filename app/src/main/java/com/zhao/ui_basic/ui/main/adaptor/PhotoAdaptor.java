@@ -19,7 +19,7 @@ public class PhotoAdaptor extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView ivPhoto = new ImageView(container.getContext());
         ivPhoto.setScaleType(ImageView.ScaleType.FIT_XY);//图片平铺
-        ivPhoto.setImageResource(R.mipmap.s);
+        ivPhoto.setImageResource(R.mipmap.s);//设置默认图片
         /**if (!Utils.isListEmpty(photoUrl)) {
             Glide.with(container.getContext()).
                     load(photoUrl.get(position)).
@@ -33,9 +33,9 @@ public class PhotoAdaptor extends PagerAdapter {
     }
     @Override
     public int getCount() {
-        return 0;
+        return photoUrl.size();
     }
-
+    //判定是否当前
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object;

@@ -23,12 +23,10 @@ public class MainPresenter extends BasePresenter<MainView> {
      * 发起注册
      */
     public void getTravelPage(int page) {
-        Log.e("++++++++++mpther fuker","+++++++++++++++++++++++++++++++++++++++++");
         HttpUtils.sendHttp(HttpUtils.createApi(ApiService.class).getTravelPage(page),
                 new ResponseListener<List<MainModel>>() {
                     @Override
                     public void onSuccess(List<MainModel> data) {
-                        System.out.print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                         if (!Utils.isEmpty(data)) {
                                 if (getmBaseView() != null) {
                                     getmBaseView().setData(data, GET_TRAVEL_LIST);
