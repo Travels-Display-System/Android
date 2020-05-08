@@ -3,6 +3,9 @@ package com.zhao.ui_basic.http;
 
 import android.util.Log;
 
+import com.zhao.ui_basic.mvp.BaseModel;
+import com.zhao.ui_basic.ui.main.Model.Like;
+
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -109,4 +112,5 @@ public class HttpUtils {
                     }
                 });
     }
+
 }

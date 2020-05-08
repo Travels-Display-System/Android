@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.zhao.ui_basic.R;
 import com.zhao.ui_basic.Utils.Utils;
 import com.zhao.ui_basic.Utils.event.EventMessage;
+import com.zhao.ui_basic.ui.author.WorkListActivity;
 import com.zhao.ui_basic.ui.main.Model.MainModel;
 import com.zhao.ui_basic.ui.main.Presenter.MainPresenter;
 import com.zhao.ui_basic.ui.main.View.MainView;
@@ -105,23 +106,31 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_rewind:
+                showToast("刷新内容");
                 upData();
                 break;
             case R.id.iv_who_sees:
                 onClickLeft(R.mipmap.recs_nope_stamp);
                 break;
             case R.id.iv_superlike:
-                onClickLeft(R.mipmap.recs_superlike_stamp);
+                showToast("举报");
+                onEventMessage(new EventMessage(3,String.valueOf(modelList.get(0).getId())));
                 break;
             case R.id.iv_unlimited_likes:
-                onClickRight(R.mipmap.recs_like_stamp);
+                showToast("喜欢");
+                getmPersenter().getAction("1588402474590",getTravelId(),0);
                 break;
             case R.id.iv_boost:
-                onClickRight(R.mipmap.recs_rewind_stamp);
+                showToast("抛弃");
+                getmPersenter().getAction("1588402474590",getTravelId(),1);
                 break;
             case R.id.iv_profile:
+                //onEventMessage(new EventMessage(2,String.valueOf(modelList.get(0).getId())));
+                startIntent(WorkListActivity.class);
+                overridePendingTransition(R.anim.anim_bottom,R.anim.anim_bottom_not);
                 break;
             case R.id.iv_message:
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left_out);
                 break;
             default:
                 break;
@@ -139,7 +148,17 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
                     initData();
                 }
             }else if(message.getCode() == 2) {
-               startIntent(TravelDetails.class);
+                Intent intent = new Intent();
+                intent.putExtra("TravelId",String.valueOf(message.getData()));
+                intent.setClass(this,TravelDetails.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_bottom, R.anim.anim_bottom_not);
+            }else{
+                Intent intent = new Intent();
+                intent.putExtra("TravelId",String.valueOf(message.getData()));
+                intent.setClass(this,ReportActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_bottom, R.anim.anim_bottom_not);
             }
         }
     }
@@ -170,4 +189,24 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
         getmPersenter().getTravelPage(page);
     }
 
+    @Override
+    public void acType(int type) {
+        switch (type) {
+            case 0:
+                onClickLeft(R.mipmap.recs_rewind_stamp);
+                break;
+            case 1:
+                onClickRight(R.mipmap.recs_like_stamp);
+                break;
+            case 3:
+                onClickRight(R.mipmap.recs_superlike_stamp);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private String getTravelId(){
+        return Utils.isListEmpty(modelList)?null:modelList.get(0).getId();
+    }
 }

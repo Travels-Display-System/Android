@@ -2,8 +2,5 @@ package com.zhao.ui_basic.ui.main.View;
 
 import com.zhao.ui_basic.mvp.BaseView;
 
-public interface MainView extends BaseView {
-//逻辑
-
-    void acType(int type);
+public interface ReportView extends BaseView {
 }

@@ -16,7 +16,7 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
      * 发起注册
      */
     public void sendRegister(String photo, String name, String email, String pass) {
-        HttpUtils.sendHttp(HttpUtils.createApi(ApiService.class)
+        /**HttpUtils.sendHttp(HttpUtils.createApi(ApiService.class)
                         .sendRegister(name,pass),
                 new ResponseListener<BaseModel<RegisterModel>>() {
                     @Override
@@ -37,6 +37,6 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
                             getmBaseView().error(e);
                         }
                     }
-                });
+                });*/
     }
 }

@@ -3,7 +3,7 @@ package com.zhao.ui_basic.ui.main.Model;
 import java.util.List;
 
 public class MainModel {
-    private Long id;
+    private String id;
 
     private String title;
 
@@ -22,11 +22,11 @@ public class MainModel {
 
     public List<Keyword> keywordList;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

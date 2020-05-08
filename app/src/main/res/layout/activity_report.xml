@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.ReportActivity"
+    android:background="@drawable/background">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="@dimen/d40"
+        android:paddingBottom="@dimen/d20"
+        app:contentInsetStart="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d15"
+            android:text="Cancel"
+            android:textColor="@color/c5"
+            android:textSize="@dimen/sp17" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Report"
+            android:textColor="@color/c3"
+            android:textSize="@dimen/sp17"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/d20"
+            android:text="Send"
+            android:textColor="@color/c5"
+            android:textSize="@dimen/sp17" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_title"
+        app:layout_constraintVertical_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/d15"
+                android:text="Abstract"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/s15" />
+
+            <EditText
+                android:id="@+id/et_abstract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:hint="Enter full Abstract"
+                android:maxLength="20"
+                android:paddingLeft="@dimen/d15"
+                android:paddingTop="@dimen/d15"
+                android:paddingBottom="@dimen/d15"
+                android:textColor="@color/c3"
+                android:textColorHint="@color/c2"
+                android:textSize="@dimen/s15" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/d15"
+                android:text="details"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/s15" />
+
+            <EditText
+                android:id="@+id/et_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:hint="Detailed Description"
+                android:paddingLeft="@dimen/d15"
+                android:minHeight="200dp"
+                android:paddingTop="@dimen/d15"
+                android:paddingBottom="@dimen/d15"
+                android:textColor="@color/c3"
+                android:textColorHint="@color/c2"
+                android:textSize="@dimen/s15" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
