@@ -58,4 +58,7 @@ public interface ApiService {
 
     @POST(value = "travel/deletetravel")
     Observable<ResponseBody> deleteTravel(@Body WorkModel workModel);
+
+    @POST(value = "travel/change")
+    Observable<ResponseBody> changeTrave(@Body WorkModel workModel);
 }

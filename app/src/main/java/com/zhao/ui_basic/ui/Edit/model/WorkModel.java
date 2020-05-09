@@ -47,6 +47,26 @@ public class WorkModel {
             keywordList.add(new Keyword(a));
         }
     }
+    public WorkModel(String title,String content,String username,String time,Integer n,String keywords,String Id){
+        this.title = title;
+        this.content = content;
+        this.timestamp = time;
+        this.username = username;
+        this.state = n;
+        this.id = Id;
+        String regex = "[;]";
+        String[] result1 = new String[]{};
+        if(!Utils.isEmpty(keywords))
+            result1 = keywords.split(";");
+        else
+            keywordList.add(new Keyword("mother fucker"));
+
+
+        keywordList = new ArrayList<>();
+        for(String a : result1){
+            keywordList.add(new Keyword(a));
+        }
+    }
 
     public String getId() {
         return id;

@@ -30,6 +30,8 @@ public class EditActivity  extends BaseActivity<EditView, EditPresernter> implem
     private String title;
     private String timestamp;
     private String keywords;
+    private Integer type;
+    private String Id;
     @Override
     public boolean isRegister() {
         return false;
@@ -49,10 +51,11 @@ public class EditActivity  extends BaseActivity<EditView, EditPresernter> implem
         et_keywords = findViewById(R.id.et_keywords);
 
         if(getIntent()!=null){
-            int type = getIntent().getIntExtra("type",0);
+            type = getIntent().getIntExtra("type",0);
             if(type != 0){
                 title = getIntent().getStringExtra("title");
                 description = getIntent().getStringExtra("content");
+                Id = getIntent().getStringExtra("Id");
                 et_profession.setText(description);
                 et_title.setText(title);
             }
@@ -102,7 +105,11 @@ public class EditActivity  extends BaseActivity<EditView, EditPresernter> implem
                     showToast("enter keywords");
                     return;
                 }
-                getmPersenter().sendTravel(description, "dyj", timestamp,title,keywords);
+                if(type == 0)
+                    getmPersenter().sendTravel(description, "dyj", timestamp,title,keywords);
+                else{
+                    getmPersenter().changeTravel(description, "dyj", timestamp,title,keywords,Id);
+                }
                 startIntent(WorkListActivity.class);
                 break;
             case R.id.tv_cancel:
