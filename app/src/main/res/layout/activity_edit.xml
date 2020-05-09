@@ -112,6 +112,20 @@
                 android:textSize="@dimen/s15" />
 
 
+            <EditText
+                android:id="@+id/et_keywords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:hint="请使用分号分隔关键词"
+                android:maxLength="20"
+                android:paddingLeft="@dimen/d15"
+                android:paddingTop="@dimen/d15"
+                android:paddingBottom="@dimen/d15"
+                android:textColor="@color/c3"
+                android:textColorHint="@color/c2"
+                android:textSize="@dimen/s15" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

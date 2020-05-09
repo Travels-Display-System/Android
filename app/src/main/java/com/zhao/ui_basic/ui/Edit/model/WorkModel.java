@@ -1,7 +1,11 @@
 package com.zhao.ui_basic.ui.Edit.model;
 import   java.text.SimpleDateFormat;
+
+import com.zhao.ui_basic.Utils.Utils;
 import com.zhao.ui_basic.ui.main.Model.Keyword;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class WorkModel {
@@ -24,11 +28,24 @@ public class WorkModel {
 
     public List<Keyword> keywordList;
 
-    public WorkModel(String title,String content,String username,String time){
+    public WorkModel(String title,String content,String username,String time,Integer n,String keywords){
         this.title = title;
         this.content = content;
         this.timestamp = time;
         this.username = username;
+        this.state = n;
+        String regex = "[;]";
+        String[] result1 = new String[]{};
+        if(!Utils.isEmpty(keywords))
+            result1 = keywords.split(";");
+        else
+            keywordList.add(new Keyword("mother fucker"));
+
+
+        keywordList = new ArrayList<>();
+        for(String a : result1){
+            keywordList.add(new Keyword(a));
+        }
     }
 
     public String getId() {

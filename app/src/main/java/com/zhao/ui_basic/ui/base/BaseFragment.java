@@ -21,6 +21,9 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter> 
     private View view;
     private P mPresenter;
 
+    public BaseFragment(){
+
+    }
     public BaseFragment(String title) {
         this.title = title;
     }

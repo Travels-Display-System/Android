@@ -1,7 +1,9 @@
 package com.zhao.ui_basic.ui.Edit;
 
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,10 +25,11 @@ public class EditActivity  extends BaseActivity<EditView, EditPresernter> implem
     private TextView tv_send;
     private EditText et_profession;
     private EditText et_title;
+    private EditText et_keywords;
     private String description;
     private String title;
     private String timestamp;
-
+    private String keywords;
     @Override
     public boolean isRegister() {
         return false;
@@ -43,17 +46,22 @@ public class EditActivity  extends BaseActivity<EditView, EditPresernter> implem
         tv_send = findViewById(R.id.tv_send);
         et_profession = findViewById(R.id.et_profession);
         et_title = findViewById(R.id.et_title);
-        tv_send.setOnClickListener(this);
-        tv_cancel.setOnClickListener(this);
+        et_keywords = findViewById(R.id.et_keywords);
+
         if(getIntent()!=null){
             int type = getIntent().getIntExtra("type",0);
             if(type != 0){
                 title = getIntent().getStringExtra("title");
                 description = getIntent().getStringExtra("content");
-                et_title.setText(title);
                 et_profession.setText(description);
+                et_title.setText(title);
             }
         }
+        et_keywords.addTextChangedListener(this);
+        et_profession.addTextChangedListener(this);
+        et_title.addTextChangedListener(this);
+        tv_send.setOnClickListener(this);
+        tv_cancel.setOnClickListener(this);
 
     }
 
@@ -82,8 +90,20 @@ public class EditActivity  extends BaseActivity<EditView, EditPresernter> implem
 
         switch (v.getId()) {
             case R.id.tv_send:
-                getmPersenter().sendTravel(description, "dyj", timestamp,title);
-                finish();
+                if (TextUtils.isEmpty(title)) {
+                    showToast("enter title");
+                    return;
+                }
+                if (TextUtils.isEmpty(description)) {
+                    showToast("enter details");
+                    return;
+                }
+                if (TextUtils.isEmpty(keywords)) {
+                    showToast("enter keywords");
+                    return;
+                }
+                getmPersenter().sendTravel(description, "dyj", timestamp,title,keywords);
+                startIntent(WorkListActivity.class);
                 break;
             case R.id.tv_cancel:
                 finish();
@@ -107,8 +127,9 @@ public class EditActivity  extends BaseActivity<EditView, EditPresernter> implem
     public void afterTextChanged(Editable s) {
         title = getEditText(et_title);
         description = getEditText(et_profession);
-        SimpleDateFormat   formatter   =   new SimpleDateFormat("yyyy年MM月dd日   HH:mm:ss");
+        SimpleDateFormat  formatter   =   new SimpleDateFormat("yyyy年MM月dd日   HH:mm:ss");
         Date curDate =  new Date(System.currentTimeMillis());
         timestamp  =   formatter.format(curDate);
+        keywords = getEditText(et_keywords);
     }
 }

@@ -78,7 +78,6 @@ public class FeedFragment extends BaseFragment<FeedFgView, FeedFgPresenter> impl
                     intent.putExtra("type",1);
                     intent.putExtra("title", input.get(position).getTitle());
                     intent.putExtra("content", input.get(position).getContent());
-
                     intent.setClass(getActivity(), EditActivity.class);
                     startActivity(intent);
                 }

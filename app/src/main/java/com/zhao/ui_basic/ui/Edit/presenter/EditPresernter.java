@@ -10,10 +10,11 @@ import com.zhao.ui_basic.ui.main.Model.Report;
 
 public class EditPresernter extends BasePresenter {
     public void sendTravel(
-            String content,String userid,String timeStamp,String title
+            String content,String userid,String timeStamp,String title,String keywords
     ){
 
-        WorkModel report = new WorkModel(title,content,userid,timeStamp);
+
+        WorkModel report = new WorkModel(title,content,userid,timeStamp,1,keywords);
         HttpUtils.sendHttp(HttpUtils.createApi(ApiService.class).sendTravel(report),
                 new ResponseListener<WorkModel>() {
                     @Override
