@@ -51,7 +51,6 @@ public class HttpUtils {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        Log.e("============return api",tClass.toString());
         return retrofit.create(tClass);
     }
 
@@ -81,7 +80,6 @@ public class HttpUtils {
 
 
     public static <T> void sendHttp(Observable<T> observable, final ResponseListener<T> listenter) {
-        Log.e("=startsendhttp in utils", " begining");
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())//主线程修改ui
                 .subscribeOn(AndroidSchedulers.mainThread())

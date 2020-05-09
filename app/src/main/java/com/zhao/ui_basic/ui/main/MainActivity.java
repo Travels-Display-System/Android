@@ -8,15 +8,14 @@ import android.widget.ImageView;
 import com.zhao.ui_basic.R;
 import com.zhao.ui_basic.Utils.Utils;
 import com.zhao.ui_basic.Utils.event.EventMessage;
-import com.zhao.ui_basic.ui.author.WorkListActivity;
+import com.zhao.ui_basic.ui.Edit.WorkListActivity;
+import com.zhao.ui_basic.ui.base.BaseActivity;
 import com.zhao.ui_basic.ui.main.Model.MainModel;
 import com.zhao.ui_basic.ui.main.Presenter.MainPresenter;
 import com.zhao.ui_basic.ui.main.View.MainView;
-import com.zhao.ui_basic.ui.base.BaseActivity;
 import com.zhao.ui_basic.view.CardLayout;
 import com.zhao.ui_basic.view.MainCard;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -66,6 +65,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
         ivSuperlike.setOnClickListener(this);
         ivProfile.setOnClickListener(this);
         ivMessage.setOnClickListener(this);
+        com.zhao.ui_basic.ui.main.webwocket.WebClient.initWebSocket("dyj",this);
     }
 
     @Override
@@ -77,8 +77,6 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     public MainPresenter createPresenter() {
         return new MainPresenter();
     }
-
-
 
     @Override
     public void setData(Object data,String action) {
@@ -128,9 +126,6 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
                 //onEventMessage(new EventMessage(2,String.valueOf(modelList.get(0).getId())));
                 startIntent(WorkListActivity.class);
                 overridePendingTransition(R.anim.anim_bottom,R.anim.anim_bottom_not);
-                break;
-            case R.id.iv_message:
-                overridePendingTransition(R.anim.anim_right,R.anim.anim_left_out);
                 break;
             default:
                 break;

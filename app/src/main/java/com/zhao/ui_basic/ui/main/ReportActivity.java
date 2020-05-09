@@ -1,22 +1,19 @@
 package com.zhao.ui_basic.ui.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zhao.ui_basic.R;
-import com.zhao.ui_basic.Utils.event.EventMessage;
-import com.zhao.ui_basic.ui.author.WorkListActivity;
 import com.zhao.ui_basic.ui.base.BaseActivity;
 import com.zhao.ui_basic.ui.main.Presenter.ReportPresenter;
 import com.zhao.ui_basic.ui.main.View.ReportView;
 import com.zhao.ui_basic.ui.user.view.RegisterView;
 
-public class ReportActivity extends BaseActivity<ReportView, ReportPresenter> implements RegisterView, View.OnClickListener {
+public class ReportActivity extends BaseActivity<ReportView, ReportPresenter> implements RegisterView, View.OnClickListener, TextWatcher {
     private EditText Abstract;
     private EditText description;
     private TextView cancel;
@@ -71,8 +68,6 @@ public class ReportActivity extends BaseActivity<ReportView, ReportPresenter> im
         switch (view.getId()) {
             case R.id.tv_send:
                 showToast("举报已发送");
-                strAbstract = getEditText(Abstract);
-                strDes = getEditText(description);
                 getmPersenter().sendReport("Abstract: " + strAbstract + "/n details: " + strDes, "1588402474590", Id);
                 break;
             case R.id.tv_cancel:
@@ -81,5 +76,21 @@ public class ReportActivity extends BaseActivity<ReportView, ReportPresenter> im
             default:
                 break;
         }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        strAbstract = getEditText(Abstract);
+        strDes = getEditText(description);
     }
 }

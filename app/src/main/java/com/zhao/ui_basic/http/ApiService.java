@@ -1,6 +1,7 @@
 package com.zhao.ui_basic.http;
 
 import com.zhao.ui_basic.mvp.BaseModel;
+import com.zhao.ui_basic.ui.Edit.model.WorkModel;
 import com.zhao.ui_basic.ui.main.Model.Like;
 import com.zhao.ui_basic.ui.main.Model.MainModel;
 import com.zhao.ui_basic.ui.main.Model.Report;
@@ -9,6 +10,7 @@ import com.zhao.ui_basic.ui.user.model.RegisterModel;
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -44,6 +46,16 @@ public interface ApiService {
     @POST("report")
     Observable<Report> reportTravel(@Body Report report);
 
-    @GET("travel/query/self")
-    Observable<List<MainModel>> getSelfTravel(@Query("username") String username, @Query("page") int page);
+    @GET("travel/query/self/yes")
+    Observable<List<WorkModel>> getSelfTravelR(@Query("username") String username);
+
+    @GET("travel/query/self/no")
+    Observable<List<WorkModel>> getSelfTravelO(@Query("username") String username);
+
+    @POST("travel")
+    Observable<WorkModel> sendTravel(@Body WorkModel workModel);
+
+
+    @POST(value = "travel/deletetravel")
+    Observable<ResponseBody> deleteTravel(@Body WorkModel workModel);
 }

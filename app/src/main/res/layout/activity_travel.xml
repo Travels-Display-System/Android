@@ -31,15 +31,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gl_horizontal"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="-16dp">
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-57dp">
 
         <TextView
             android:id="@+id/tv_name"
@@ -73,63 +73,79 @@
             android:textColor="@color/c3"
             android:textSize="@dimen/sp25" />
 
-        <TextView
-            android:id="@+id/tv_bio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
             android:layout_below="@id/tv_work"
             android:layout_marginLeft="@dimen/d20"
             android:layout_marginTop="@dimen/d20"
-            android:layout_marginRight="@dimen/d20"
-            android:text="Create nskskfnghefdhsdh"
-            android:textColor="@color/c3"
-            android:textSize="@dimen/sp17" />
+            android:layout_marginRight="@dimen/d10"
+            android:layout_marginBottom="50dp"
+            android:fadingEdge="vertical"
+            android:scrollbars="vertical">
 
-        <ImageView
-            android:id="@+id/ic_pass"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create nskskfnghefdhsdh"
+                android:textColor="@color/c3"
+                android:textSize="@dimen/sp17" />
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="32dp"
-            android:layout_toLeftOf="@id/ic_bule"
-            android:background="@drawable/bg_btn_round"
-            android:src="@mipmap/ic_feel_pass"
-            android:maxWidth="48dp"
-            android:maxHeight="48dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds ="true"/>
+            android:layout_marginBottom="0dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="48dp"
+                android:maxHeight="48dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_feel_pass" />
+
+            <ImageView
+                android:id="@+id/ic_bule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_bule" />
+
+            <ImageView
+                android:id="@+id/ic_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ic_bule"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_feed_like" />
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/ic_bule"
+            android:id="@+id/iv_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/d20"
-            android:layout_marginRight="@dimen/d20"
-            android:layout_marginBottom="30dp"
-            android:src="@mipmap/ic_bule" />
-
-        <ImageView
-            android:id="@+id/ic_like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="32dp"
-            android:layout_toRightOf="@id/ic_bule"
-            android:src="@mipmap/ic_feed_like" />
+            android:layout_marginStart="107dp"
+            android:layout_marginLeft="107dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="404dp"
+            android:layout_toEndOf="@+id/tv_age"
+            android:layout_toRightOf="@+id/tv_age"
+            android:src="@mipmap/ic_down"></ImageView>
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/iv_finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/d20"
-        android:src="@mipmap/ic_down"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" ></ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
