@@ -76,13 +76,8 @@ public class LogActivity extends BaseActivity<LoginView, LoginPresenter>
     public void afterTextChanged(Editable s) {
         name = getEditText(etName);
         password = getEditText(etPass);
-        if(name.length() > 0 && password.length() >= 6 ){
-            btRegister.setEnabled(true);
-            btRegister.setBackgroundResource( R.drawable.background_button);
-        }else{
-            btRegister.setEnabled(false);
-            btRegister.setBackgroundResource( R.drawable.background_button_not);
-        }
+        btRegister.setEnabled(true);
+        btRegister.setBackgroundResource( R.drawable.background_button);
     }
 
     @Override
