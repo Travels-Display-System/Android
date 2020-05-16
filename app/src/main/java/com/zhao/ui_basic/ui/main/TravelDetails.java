@@ -167,16 +167,18 @@ public class TravelDetails extends  BaseActivity<TravelView, TravelPresenter> im
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_finish:
-                finish();
+                startIntent(MainActivity.class);
                 break;
             case R.id.ic_pass:
+                showToast("举报");
                 onEventMessage(new EventMessage(1,Id));
                 break;
             case R.id.ic_bule:
-                    getmPersenter().getAction("1588402474590", model.getId(), 1);
+                getmPersenter().getAction("1588402474590", model.getId(), 1);
                // setAction(1);
                 break;
             case R.id.ic_like:
+                showToast("点赞");
                 getmPersenter().getAction("1588402474590", model.getId(), 0);
                 //setAction(2);
                 break;

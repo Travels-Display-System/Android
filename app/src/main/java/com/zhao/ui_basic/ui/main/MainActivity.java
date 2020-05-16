@@ -30,7 +30,6 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     private ImageView ivBoost;
     private ImageView ivMessage;
     private ImageView ivRewind;
-    private ImageView ivWhoSees;
     private ImageView ivSuperlike;
     private ImageView ivUnlimitedLikes;
     private CardLayout mCardLayout;
@@ -56,12 +55,10 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
         ivRewind = findViewById(R.id.iv_rewind);
         ivSuperlike = findViewById(R.id.iv_superlike);
         ivUnlimitedLikes = findViewById(R.id.iv_unlimited_likes);
-        ivWhoSees = findViewById(R.id.iv_who_sees);
         mCardLayout = findViewById(R.id.cd_layout);
         ivUnlimitedLikes.setOnClickListener(this);
         ivRewind.setOnClickListener(this);
         ivBoost.setOnClickListener(this);
-        ivWhoSees.setOnClickListener(this);
         ivSuperlike.setOnClickListener(this);
         ivProfile.setOnClickListener(this);
         ivMessage.setOnClickListener(this);
@@ -107,20 +104,17 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
                 showToast("刷新内容");
                 upData();
                 break;
-            case R.id.iv_who_sees:
-                onClickLeft(R.mipmap.recs_nope_stamp);
-                break;
             case R.id.iv_superlike:
+                showToast("抛弃");
+                getmPersenter().getAction("1588402474590",getTravelId(),1);
+                break;
+            case R.id.iv_boost:
                 showToast("举报");
                 onEventMessage(new EventMessage(3,String.valueOf(modelList.get(0).getId())));
                 break;
             case R.id.iv_unlimited_likes:
                 showToast("喜欢");
                 getmPersenter().getAction("1588402474590",getTravelId(),0);
-                break;
-            case R.id.iv_boost:
-                showToast("抛弃");
-                getmPersenter().getAction("1588402474590",getTravelId(),1);
                 break;
             case R.id.iv_profile:
                 //onEventMessage(new EventMessage(2,String.valueOf(modelList.get(0).getId())));

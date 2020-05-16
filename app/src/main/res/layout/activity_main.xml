@@ -62,13 +62,6 @@
             android:src="@mipmap/perk_rewind_icon" />
 
         <ImageView
-            android:id="@+id/iv_who_sees"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@mipmap/perk_who_sees_you_icon" />
-
-        <ImageView
             android:id="@+id/iv_superlike"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
